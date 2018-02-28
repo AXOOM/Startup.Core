@@ -3,7 +3,6 @@ using System.Reflection;
 using System.Runtime.Loader;
 using System.Threading;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Startup.Core
 {
@@ -22,10 +21,8 @@ namespace Startup.Core
             var startup = new TStartup();
 
             var serviceCollection = new ServiceCollection();
-            startup.ConfigureServices(serviceCollection);
-
-            var serviceProvider = serviceCollection.BuildServiceProvider();
-            startup.Configure(serviceProvider.GetService<ILoggerFactory>(), serviceProvider);
+            var serviceProvider = startup.ConfigureServices(serviceCollection);
+            startup.Configure(serviceProvider);
 
             var wait = new ManualResetEventSlim(initialState: false);
 
