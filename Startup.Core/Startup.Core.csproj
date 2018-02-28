@@ -10,7 +10,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>0.1</Version>
     <Description>Simple startup framework for .NET Core services, mimicking semantics of ASP.NET Core startup.</Description>
     <Authors>AXOOM GmbH</Authors>
     <Company>AXOOM GmbH</Company>
