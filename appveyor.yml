@@ -1,10 +1,10 @@
 image: Visual Studio 2017
 
 before_build:
-  - ps: gitversion /l console /output buildserver
+  - gitversion /l console /output buildserver
 
 build_script:
-  - ps: ./build.ps1 $env:GitVersion_NuGetVersion
+  - dotnet msbuild /t:Restore /t:Build /p:Configuration=Release /p:Version=%GitVersion_NuGetVersion%
 
 artifacts:
   - path: '*/bin/Release/*.nupkg'
