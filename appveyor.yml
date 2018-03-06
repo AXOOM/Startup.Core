@@ -4,10 +4,10 @@ before_build:
   - gitversion /l console /output buildserver
 
 build_script:
-  - dotnet msbuild /t:Restore /t:Build /p:Configuration=Release /p:Version=%GitVersion_NuGetVersion%
+  - ps: .\build.ps1 $env:GitVersion_NuGetVersion
 
 artifacts:
-  - path: '*/bin/Release/*.nupkg'
+  - path: '*\bin\Release\*.nupkg'
 
 deploy:
   provider: Environment
